@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembagian Kelompok Siswa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Pembagian Kelompok Siswa</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="jumlah-kelompok">Jumlah Kelompok:</label>
+                <select id="jumlah-kelompok">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="tipe-pembagian">Tipe Pembagian:</label>
+                <select id="tipe-pembagian">
+                    <option value="campur">Campur (Acak Semua)</option>
+                    <option value="pisah-gender">Pisah Gender</option>
+                </select>
+            </div>
+            
+            <div class="button-group">
+                <button id="acak-btn" class="btn-primary">Acak Sekarang</button>
+                <button id="reset-btn" class="btn-secondary">Reset Semua</button>
+                <button id="simpan-btn" class="btn-success" disabled>Simpan Hasil</button>
+            </div>
+            
+            <div class="progress-indicator">
+                <span id="progress-text">0 dari 35 siswa sudah dibagi</span>
+            </div>
+        </div>
+        
+        <div class="results">
+            <div class="kelompok-container" id="kelompok-container">
+                <!-- Kelompok akan ditampilkan di sini -->
+            </div>
+            
+            <div class="daftar-siswa">
+                <h3>Daftar Semua Siswa</h3>
+                <div class="siswa-list" id="siswa-list">
+                    <!-- Daftar siswa akan ditampilkan di sini -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Animasi -->
+    <div class="modal" id="animation-modal">
+        <div class="modal-content">
+            <div class="random-animation" id="random-animation"></div>
+            <div class="selected-result" id="selected-result"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
