@@ -277,6 +277,14 @@ h3 {
         grid-template-columns: 1fr;
     }
 }
+
+.btn-primary.auto-mode {
+    background-color: #ff6b4a;
+}
+
+.btn-primary.auto-mode:hover {
+    background-color: #e05a3a;
+}
 </style>
 
 </head>
@@ -401,6 +409,9 @@ let siswaTerpilih = [];
 let isAnimating = false;
 let animationInterval;
 let currentGroupIndex = 0;
+let autoMode = false;
+let autoInterval;
+let delayBetweenPicks = 3000; // 3 detik jeda antara pemilihan
 
 // Initialize
 function init() {
@@ -464,6 +475,7 @@ function acakSiswa() {
     
     if (siswaTerpilih.length === siswa.length) {
         alert('Semua siswa sudah terbagi!');
+        stopAutoMode();
         return;
     }
     
@@ -480,7 +492,6 @@ function acakSiswa() {
         const perempuanBelumTerpilih = siswaBelumTerpilih.filter(s => s.gender === 'P').length > 0;
         
         if (lakiBelumTerpilih && perempuanBelumTerpilih) {
-            // Ambil secara bergantian gender
             const lastGender = kelompok.flatMap(k => k[k.length - 1]?.gender).pop();
             const nextGender = lastGender === 'L' ? 'P' : 'L';
             siswaYangDiacak = siswaBelumTerpilih.filter(s => s.gender === nextGender);
@@ -489,6 +500,7 @@ function acakSiswa() {
     
     if (siswaYangDiacak.length === 0) {
         alert('Tidak ada siswa yang memenuhi kriteria pembagian!');
+        stopAutoMode();
         return;
     }
     
@@ -498,8 +510,8 @@ function acakSiswa() {
     selectedResult.textContent = '';
     
     let counter = 0;
-    const duration = 10000; // 10 detik
-    const interval = 100; // 0.1 detik
+    const duration = 2000; // Kurangi durasi animasi menjadi 2 detik
+    const interval = 100;
     
     animationInterval = setInterval(() => {
         const randomIndex = Math.floor(Math.random() * siswaYangDiacak.length);
@@ -522,13 +534,13 @@ function selesaiAcak(siswa) {
     setTimeout(() => {
         // Tambahkan siswa ke kelompok
         kelompok[currentGroupIndex].push(siswa);
-        siswaTerpilih.push(siswa.nama);
+    siswaTerpilih.push(siswa.nama);
         
         // Update tampilan
         const kelompokList = document.getElementById(`kelompok-${currentGroupIndex}`);
-        const li = document.createElement('li');
-        li.textContent = `${siswa.nama} (${siswa.gender})`;
-        kelompokList.appendChild(li);
+    const li = document.createElement('li');
+    li.textContent = `${siswa.nama} (${siswa.gender})`;
+    kelompokList.appendChild(li);
         
         // Update group index (round robin)
         currentGroupIndex = (currentGroupIndex + 1) % parseInt(jumlahKelompokSelect.value);
@@ -538,20 +550,50 @@ function selesaiAcak(siswa) {
         
         // Tutup modal
         setTimeout(() => {
-            animationModal.style.display = 'none';
-            isAnimating = false;
-        }, 3000);
-    }, 100);
+        animationModal.style.display = 'none';
+        isAnimating = false;
+// Jika auto mode aktif, lanjutkan ke siswa berikutnya setelah jeda
+        if (autoMode && siswaTerpilih.length < siswa.length) {
+            autoInterval = setTimeout(() => {
+                acakSiswa();
+            }, delayBetweenPicks);
+        }
+    }, 1000); // Kurangi waktu tampil hasil menjadi 1 detik
+}
+// Reset semua
+function startAutoMode() {
+    if (siswaTerpilih.length === siswa.length) {
+        alert('Semua siswa sudah terbagi!');
+        return;
+    }
+
+    autoMode = true;
+    acakBtn.textContent = 'Berhenti Auto';
+    acakSiswa();
 }
 
-// Reset semua
+function stopAutoMode() {
+    autoMode = false;
+    clearTimeout(autoInterval);
+    acakBtn.textContent = 'Acak Sekarang';
+}
+
+acakBtn.addEventListener('click', function() {
+    if (autoMode) {
+        stopAutoMode();
+    } else {
+        startAutoMode();
+    }
+});
+
 function resetSemua() {
+    stopAutoMode();
     if (isAnimating) {
         clearInterval(animationInterval);
         isAnimating = false;
     }
-    
-    animationModal.style.display = 'none';
+
+animationModal.style.display = 'none';
     buatKelompok();
     localStorage.removeItem('kelompokData');
 }
@@ -559,7 +601,7 @@ function resetSemua() {
 // Simpan hasil
 function simpanHasil() {
     const data = {
-        jumlahKelompok: jumlahKelompokSelect.value,
+        jumlahKelompok: jumlahKelompokSelect.value, 
         tipePembagian: tipePembagianSelect.value,
         kelompok: kelompok,
         timestamp: new Date().toISOString()
