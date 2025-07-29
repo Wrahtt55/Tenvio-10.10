@@ -525,62 +525,62 @@
 
         // Selesai acak
         function selesaiAcak(siswa) {
-            randomAnimation.textContent = '';
-            selectedResult.textContent = `${siswa.nama} masuk ke Kelompok ${currentGroupIndex + 1}`;
+    randomAnimation.textContent = '';
+    selectedResult.textContent = `${siswa.nama} masuk ke Kelompok ${currentGroupIndex + 1}`;
             
             setTimeout(() => {
                 // Tambahkan siswa ke kelompok
                 kelompok[currentGroupIndex].push(siswa);
-                siswaTerpilih.push(siswa.nama);
+    siswaTerpilih.push(siswa.nama);
                 
                 // Update tampilan
                 const kelompokList = document.getElementById(`kelompok-${currentGroupIndex}`);
-                const li = document.createElement('li');
-                li.textContent = `${siswa.nama} (${siswa.gender})`;
-                kelompokList.appendChild(li);
-                
+    const li = document.createElement('li');
+    li.textContent = `${siswa.nama} (${siswa.gender})`;
+    kelompokList.appendChild(li);
                 // Update group index (round robin)
                 currentGroupIndex = (currentGroupIndex + 1) % parseInt(jumlahKelompokSelect.value);
-                
                 // Update progress
                 updateProgress();
                 
                 // Tutup modal
                 setTimeout(() => {
-                    animationModal.style.display = 'none';
-                    isAnimating = false;
+        animationModal.style.display = 'none';
+        isAnimating = false;
                     
                     // Jika auto mode aktif, lanjutkan ke siswa berikutnya setelah jeda
-                    if (autoMode && siswaTerpilih.length < siswa.length) {
-                        autoInterval = setTimeout(() => {
-                            acakSiswa();
-                        }, delayBetweenPicks);
-                    }
-                }, 5000); // Waktu tampil hasil 1 detik
-            }, 100);
+                     if (autoMode && siswaTerpilih.length < siswa.length) {
+            autoInterval = setTimeout(() => {
+                acakSiswa();
+            }, delayBetweenPicks);
+        } else if (siswaTerpilih.length === siswa.length) {
+            stopAutoMode();
         }
+    }, 1000);
+}
 
         // Fungsi untuk memulai auto mode
         function startAutoMode() {
-            if (siswaTerpilih.length === siswa.length) {
-                alert('Semua siswa sudah terbagi!');
-                return;
-            }
+    if (siswaTerpilih.length === siswa.length) {
+        alert('Semua siswa sudah terbagi!');
+        return;
+    }
             
             autoMode = true;
-            acakBtn.textContent = 'Berhenti Auto';
-            acakBtn.classList.add('auto-mode');
-            acakSiswa();
-        }
+    acakBtn.textContent = 'Berhenti Auto';
+    acakBtn.classList.add('auto-mode');
+    
+    // Mulai proses acak pertama
+    acakSiswa();
+}
 
         // Fungsi untuk menghentikan auto mode
         function stopAutoMode() {
-            autoMode = false;
-            clearTimeout(autoInterval);
-            acakBtn.textContent = 'Acak Sekarang';
-            acakBtn.classList.remove('auto-mode');
-        }
-
+    autoMode = false;
+    clearTimeout(autoInterval);
+    acakBtn.textContent = 'Acak Sekarang';
+    acakBtn.classList.remove('auto-mode');
+}
         // Reset semua
         function resetSemua() {
             stopAutoMode();
@@ -674,12 +674,12 @@
 
         // Event Listeners
         acakBtn.addEventListener('click', function() {
-            if (autoMode) {
-                stopAutoMode();
-            } else {
-                startAutoMode();
-            }
-        });
+    if (autoMode) {
+        stopAutoMode();
+    } else {
+        startAutoMode();
+    }
+});
         
         resetBtn.addEventListener('click', resetSemua);
         simpanBtn.addEventListener('click', simpanHasil);
