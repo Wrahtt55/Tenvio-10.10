@@ -3,290 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembagian Kelompok Siswa</title>
-    <link rel="stylesheet">
+    <title>Pembagian Kelompok Siswa 10.10</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-    --primary-color: #4a6bff;
-    --secondary-color: #6c757d;
-    --success-color: #28a745;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --border-color: #dee2e6;
-    --font-main: 'Poppins', sans-serif;
-}
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --border-color: #dee2e6;
+            --font-main: 'Poppins', sans-serif;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: var(--font-main);
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7ff;
-    padding: 20px;
-    font-size: 14px;
-}
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7ff;
+            padding: 20px;
+            font-size: 14px;
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 25px;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+        }
 
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: var(--primary-color);
-    font-size: 24px;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
 
-h3 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: var(--dark-color);
-}
+        h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--dark-color);
+        }
 
-.controls {
-    background-color: var(--light-color);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: flex-end;
-}
+        .controls {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+        }
 
-.control-group {
-    display: flex;
-    flex-direction: column;
-    min-width: 150px;
-}
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 150px;
+        }
 
-.control-group label {
-    margin-bottom: 5px;
-    font-weight: 500;
-    font-size: 14px;
-}
+        .control-group label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+        }
 
-.control-group select {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-family: var(--font-main);
-    font-size: 14px;
-}
+        .control-group select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-size: 14px;
+        }
 
-.button-group {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+        .button-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
 
-.btn-primary, .btn-secondary, .btn-success {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--font-main);
-    font-weight: 500;
-    font-size: 14px;
-    transition: all 0.3s;
-}
+        .btn-primary, .btn-secondary, .btn-success {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-.btn-primary:hover {
-    background-color: #3a5bef;
-}
+        .btn-primary:hover {
+            background-color: #3a5bef;
+        }
 
-.btn-secondary {
-    background-color: var(--secondary-color);
-    color: white;
-}
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
 
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
 
-.btn-success {
-    background-color: var(--success-color);
-    color: white;
-}
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
 
-.btn-success:hover {
-    background-color: #218838;
-}
+        .btn-success:hover {
+            background-color: #218838;
+        }
 
-.progress-indicator {
-    margin-left: auto;
-    font-size: 14px;
-    color: var(--dark-color);
-    font-weight: 500;
-}
+        .progress-indicator {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
 
-.results {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
+        .results {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
 
-.kelompok-container {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
+        .kelompok-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
 
-.kelompok {
-    flex: 1;
-    min-width: 200px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    padding: 15px;
-    border: 1px solid var(--border-color);
-}
+        .kelompok {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            border: 1px solid var(--border-color);
+        }
 
-.kelompok-header {
-    font-weight: 600;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--primary-color);
-    font-size: 16px;
-}
+        .kelompok-header {
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--primary-color);
+            font-size: 16px;
+        }
 
-.kelompok-list {
-    list-style-type: none;
-}
+        .kelompok-list {
+            list-style-type: none;
+        }
 
-.kelompok-list li {
-    padding: 5px 0;
-    border-bottom: 1px dashed #eee;
-    font-size: 14px;
-}
+        .kelompok-list li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+        }
 
-.kelompok-list li:last-child {
-    border-bottom: none;
-}
+        .kelompok-list li:last-child {
+            border-bottom: none;
+        }
 
-.daftar-siswa {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    padding: 20px;
-    border: 1px solid var(--border-color);
-}
+        .daftar-siswa {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
 
-.siswa-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-}
+        .siswa-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
 
-.siswa-item {
-    padding: 8px 12px;
-    background-color: var(--light-color);
-    border-radius: 4px;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-}
+        .siswa-item {
+            padding: 8px 12px;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-.siswa-item .gender {
-    font-weight: 600;
-    color: var(--primary-color);
-}
+        .siswa-item .gender {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
 
-.modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-}
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
 
-.random-animation {
-    font-size: 24px;
-    font-weight: 600;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-}
+        .random-animation {
+            font-size: 24px;
+            font-weight: 600;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
 
-.selected-result {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--success-color);
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .selected-result {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--success-color);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .button-group {
-        flex-direction: column;
-    }
-    
-    .progress-indicator {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-    
-    .kelompok-container {
-        flex-direction: column;
-    }
-    
-    .siswa-list {
-        grid-template-columns: 1fr;
-    }
-}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .progress-indicator {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .kelompok-container {
+                flex-direction: column;
+            }
+            
+            .siswa-list {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.btn-primary.auto-mode {
-    background-color: #ff6b4a;
-}
+        .btn-primary.auto-mode {
+            background-color: #ff6b4a;
+        }
 
-.btn-primary.auto-mode:hover {
-    background-color: #e05a3a;
-}
-</style>
-
+        .btn-primary.auto-mode:hover {
+            background-color: #e05a3a;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -350,340 +348,345 @@ h3 {
     </div>
     
     <script>
-// Data siswa
-const siswa = [
-    { nama: "Shava", gender: "P" },
-    { nama: "Nadin", gender: "P" },
-    { nama: "Evan", gender: "L" },
-    { nama: "Rifka", gender: "P" },
-    { nama: "Bagas", gender: "L" },
-    { nama: "Reni", gender: "P" },
-    { nama: "Geysha", gender: "L" },
-    { nama: "Nazawa", gender: "P" },
-    { nama: "Dani", gender: "L" },
-    { nama: "Hana", gender: "P" },
-    { nama: "Raka", gender: "L" },
-    { nama: "Amanda", gender: "P" },
-    { nama: "Ayra", gender: "P" },
-    { nama: "Eky", gender: "L" },
-    { nama: "Kenneth", gender: "L" },
-    { nama: "Chrisant", gender: "P" },
-    { nama: "Hatma", gender: "L" },
-    { nama: "Bintari", gender: "P" },
-    { nama: "Sabrina", gender: "P" },
-    { nama: "Intan", gender: "P" },
-    { nama: "Lestari", gender: "P" },
-    { nama: "Flo", gender: "P" },
-    { nama: "Eka", gender: "P" },
-    { nama: "Fakhri", gender: "L" },
-    { nama: "Harul", gender: "L" },
-    { nama: "Siska", gender: "P" },
-    { nama: "Novia", gender: "P" },
-    { nama: "Reza", gender: "L" },
-    { nama: "Sachie", gender: "P" },
-    { nama: "Farel", gender: "L" },
-    { nama: "Seto", gender: "L" },
-    { nama: "Aisyah", gender: "P" },
-    { nama: "Safa", gender: "P" },
-    { nama: "Anie", gender: "P" },
-    { nama: "Vera", gender: "P" }
-];
+        // Data siswa
+        const siswa = [
+            { nama: "Shava", gender: "P" },
+            { nama: "Nadin", gender: "P" },
+            { nama: "Evan", gender: "L" },
+            { nama: "Rifka", gender: "P" },
+            { nama: "Bagas", gender: "L" },
+            { nama: "Reni", gender: "P" },
+            { nama: "Geysha", gender: "L" },
+            { nama: "Nazawa", gender: "P" },
+            { nama: "Dani", gender: "L" },
+            { nama: "Hana", gender: "P" },
+            { nama: "Raka", gender: "L" },
+            { nama: "Amanda", gender: "P" },
+            { nama: "Ayra", gender: "P" },
+            { nama: "Eky", gender: "L" },
+            { nama: "Kenneth", gender: "L" },
+            { nama: "Chrisant", gender: "P" },
+            { nama: "Hatma", gender: "L" },
+            { nama: "Bintari", gender: "P" },
+            { nama: "Sabrina", gender: "P" },
+            { nama: "Intan", gender: "P" },
+            { nama: "Lestari", gender: "P" },
+            { nama: "Flo", gender: "P" },
+            { nama: "Eka", gender: "P" },
+            { nama: "Fakhri", gender: "L" },
+            { nama: "Harul", gender: "L" },
+            { nama: "Siska", gender: "P" },
+            { nama: "Novia", gender: "P" },
+            { nama: "Reza", gender: "L" },
+            { nama: "Sachie", gender: "P" },
+            { nama: "Farel", gender: "L" },
+            { nama: "Seto", gender: "L" },
+            { nama: "Aisyah", gender: "P" },
+            { nama: "Safa", gender: "P" },
+            { nama: "Anie", gender: "P" },
+            { nama: "Vera", gender: "P" }
+        ];
 
-// DOM Elements
-const jumlahKelompokSelect = document.getElementById('jumlah-kelompok');
-const tipePembagianSelect = document.getElementById('tipe-pembagian');
-const acakBtn = document.getElementById('acak-btn');
-const resetBtn = document.getElementById('reset-btn');
-const simpanBtn = document.getElementById('simpan-btn');
-const progressText = document.getElementById('progress-text');
-const kelompokContainer = document.getElementById('kelompok-container');
-const siswaList = document.getElementById('siswa-list');
-const animationModal = document.getElementById('animation-modal');
-const randomAnimation = document.getElementById('random-animation');
-const selectedResult = document.getElementById('selected-result');
+        // DOM Elements
+        const jumlahKelompokSelect = document.getElementById('jumlah-kelompok');
+        const tipePembagianSelect = document.getElementById('tipe-pembagian');
+        const acakBtn = document.getElementById('acak-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const simpanBtn = document.getElementById('simpan-btn');
+        const progressText = document.getElementById('progress-text');
+        const kelompokContainer = document.getElementById('kelompok-container');
+        const siswaList = document.getElementById('siswa-list');
+        const animationModal = document.getElementById('animation-modal');
+        const randomAnimation = document.getElementById('random-animation');
+        const selectedResult = document.getElementById('selected-result');
 
-// State
-let kelompok = [];
-let siswaTersisa = [];
-let siswaTerpilih = [];
-let isAnimating = false;
-let animationInterval;
-let currentGroupIndex = 0;
-let autoMode = false;
-let autoInterval;
-let delayBetweenPicks = 3000; // 3 detik jeda antara pemilihan
+        // State
+        let kelompok = [];
+        let siswaTerpilih = [];
+        let isAnimating = false;
+        let animationInterval;
+        let currentGroupIndex = 0;
+        let autoMode = false;
+        let autoInterval;
+        const delayBetweenPicks = 3000; // 3 detik jeda antara pemilihan
 
-// Initialize
-function init() {
-    renderDaftarSiswa();
-    loadFromLocalStorage();
-}
-
-// Render daftar siswa
-function renderDaftarSiswa() {
-    siswaList.innerHTML = '';
-    siswa.forEach(siswa => {
-        const siswaItem = document.createElement('div');
-        siswaItem.className = 'siswa-item';
-        siswaItem.innerHTML = `
-            <span>${siswa.nama}</span>
-            <span class="gender">${siswa.gender}</span>
-        `;
-        siswaList.appendChild(siswaItem);
-    });
-}
-
-// Buat kelompok
-function buatKelompok() {
-    const jumlahKelompok = parseInt(jumlahKelompokSelect.value);
-    kelompokContainer.innerHTML = '';
-    kelompok = [];
-    
-    for (let i = 0; i < jumlahKelompok; i++) {
-        const kelompokDiv = document.createElement('div');
-        kelompokDiv.className = 'kelompok';
-        kelompokDiv.innerHTML = `
-            <div class="kelompok-header">Kelompok ${i + 1}</div>
-            <ul class="kelompok-list" id="kelompok-${i}"></ul>
-        `;
-        kelompokContainer.appendChild(kelompokDiv);
-        kelompok.push([]);
-    }
-    
-    // Reset state
-    siswaTersisa = [...siswa];
-    siswaTerpilih = [];
-    currentGroupIndex = 0;
-    updateProgress();
-    simpanBtn.disabled = true;
-}
-
-// Update progress indicator
-function updateProgress() {
-    const total = siswa.length;
-    const terbagi = siswaTerpilih.length;
-    progressText.textContent = `${terbagi} dari ${total} siswa sudah dibagi`;
-    
-    if (terbagi === total) {
-        simpanBtn.disabled = false;
-    }
-}
-
-// Acak siswa
-function acakSiswa() {
-    if (isAnimating) return;
-    
-    if (siswaTerpilih.length === siswa.length) {
-        alert('Semua siswa sudah terbagi!');
-        stopAutoMode();
-        return;
-    }
-    
-    const tipePembagian = tipePembagianSelect.value;
-    
-    // Filter siswa yang belum terpilih
-    const siswaBelumTerpilih = siswa.filter(s => !siswaTerpilih.includes(s.nama));
-    
-    // Jika pisah gender, filter berdasarkan gender
-    let siswaYangDiacak = [...siswaBelumTerpilih];
-    if (tipePembagian === 'pisah-gender') {
-        // Cari gender yang belum habis
-        const lakiBelumTerpilih = siswaBelumTerpilih.filter(s => s.gender === 'L').length > 0;
-        const perempuanBelumTerpilih = siswaBelumTerpilih.filter(s => s.gender === 'P').length > 0;
-        
-        if (lakiBelumTerpilih && perempuanBelumTerpilih) {
-            const lastGender = kelompok.flatMap(k => k[k.length - 1]?.gender).pop();
-            const nextGender = lastGender === 'L' ? 'P' : 'L';
-            siswaYangDiacak = siswaBelumTerpilih.filter(s => s.gender === nextGender);
+        // Initialize
+        function init() {
+            renderDaftarSiswa();
+            loadFromLocalStorage();
         }
-    }
-    
-    if (siswaYangDiacak.length === 0) {
-        alert('Tidak ada siswa yang memenuhi kriteria pembagian!');
-        stopAutoMode();
-        return;
-    }
-    
-    // Mulai animasi
-    isAnimating = true;
-    animationModal.style.display = 'flex';
-    selectedResult.textContent = '';
-    
-    let counter = 0;
-    const duration = 2000; // Kurangi durasi animasi menjadi 2 detik
-    const interval = 100;
-    
-    animationInterval = setInterval(() => {
-        const randomIndex = Math.floor(Math.random() * siswaYangDiacak.length);
-        const randomSiswa = siswaYangDiacak[randomIndex];
-        randomAnimation.textContent = randomSiswa.nama;
-        
-        counter += interval;
-        if (counter >= duration) {
-            clearInterval(animationInterval);
-            selesaiAcak(randomSiswa);
+
+        // Render daftar siswa
+        function renderDaftarSiswa() {
+            siswaList.innerHTML = '';
+            siswa.forEach(siswa => {
+                const siswaItem = document.createElement('div');
+                siswaItem.className = 'siswa-item';
+                siswaItem.innerHTML = `
+                    <span>${siswa.nama}</span>
+                    <span class="gender">${siswa.gender}</span>
+                `;
+                siswaList.appendChild(siswaItem);
+            });
         }
-    }, interval);
-}
 
-// Selesai acak
-function selesaiAcak(siswa) {
-    randomAnimation.textContent = '';
-    selectedResult.textContent = `${siswa.nama} masuk ke Kelompok ${currentGroupIndex + 1}`;
-    
-    setTimeout(() => {
-        // Tambahkan siswa ke kelompok
-        kelompok[currentGroupIndex].push(siswa);
-    siswaTerpilih.push(siswa.nama);
-        
-        // Update tampilan
-        const kelompokList = document.getElementById(`kelompok-${currentGroupIndex}`);
-    const li = document.createElement('li');
-    li.textContent = `${siswa.nama} (${siswa.gender})`;
-    kelompokList.appendChild(li);
-        
-        // Update group index (round robin)
-        currentGroupIndex = (currentGroupIndex + 1) % parseInt(jumlahKelompokSelect.value);
-        
-        // Update progress
-        updateProgress();
-        
-        // Tutup modal
-        setTimeout(() => {
-        animationModal.style.display = 'none';
-        isAnimating = false;
-// Jika auto mode aktif, lanjutkan ke siswa berikutnya setelah jeda
-        if (autoMode && siswaTerpilih.length < siswa.length) {
-            autoInterval = setTimeout(() => {
-                acakSiswa();
-            }, delayBetweenPicks);
-        }
-    }, 1000); // Kurangi waktu tampil hasil menjadi 1 detik
-}
-// Reset semua
-function startAutoMode() {
-    if (siswaTerpilih.length === siswa.length) {
-        alert('Semua siswa sudah terbagi!');
-        return;
-    }
-
-    autoMode = true;
-    acakBtn.textContent = 'Berhenti Auto';
-    acakSiswa();
-}
-
-function stopAutoMode() {
-    autoMode = false;
-    clearTimeout(autoInterval);
-    acakBtn.textContent = 'Acak Sekarang';
-}
-
-acakBtn.addEventListener('click', function() {
-    if (autoMode) {
-        stopAutoMode();
-    } else {
-        startAutoMode();
-    }
-});
-
-function resetSemua() {
-    stopAutoMode();
-    if (isAnimating) {
-        clearInterval(animationInterval);
-        isAnimating = false;
-    }
-
-animationModal.style.display = 'none';
-    buatKelompok();
-    localStorage.removeItem('kelompokData');
-}
-
-// Simpan hasil
-function simpanHasil() {
-    const data = {
-        jumlahKelompok: jumlahKelompokSelect.value, 
-        tipePembagian: tipePembagianSelect.value,
-        kelompok: kelompok,
-        timestamp: new Date().toISOString()
-    };
-    
-    // Simpan ke localStorage
-    localStorage.setItem('kelompokData', JSON.stringify(data));
-    
-    // Buat file CSV
-    let csvContent = "data:text/csv;charset=utf-8,";
-    
-    // Header
-    const headers = [];
-    for (let i = 0; i < kelompok.length; i++) {
-        headers.push(`Kelompok ${i + 1}`);
-    }
-    csvContent += headers.join(",") + "\r\n";
-    
-    // Data
-    const maxRows = Math.max(...kelompok.map(k => k.length));
-    for (let i = 0; i < maxRows; i++) {
-        const row = [];
-        for (let j = 0; j < kelompok.length; j++) {
-            row.push(kelompok[j][i] ? `${kelompok[j][i].nama} (${kelompok[j][i].gender})` : '');
-        }
-        csvContent += row.join(",") + "\r\n";
-    }
-    
-    // Download
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `pembagian_kelompok_${new Date().toISOString().slice(0, 10)}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-// Load dari localStorage
-function loadFromLocalStorage() {
-    const savedData = localStorage.getItem('kelompokData');
-    if (savedData) {
-        const data = JSON.parse(savedData);
-        
-        // Set dropdown
-        jumlahKelompokSelect.value = data.jumlahKelompok;
-        tipePembagianSelect.value = data.tipePembagian;
-        
         // Buat kelompok
-        buatKelompok();
-        
-        // Isi data
-        kelompok = data.kelompok;
-        siswaTerpilih = kelompok.flatMap(k => k.map(s => s.nama));
-        
-        // Update tampilan
-        for (let i = 0; i < kelompok.length; i++) {
-            const kelompokList = document.getElementById(`kelompok-${i}`);
-            kelompokList.innerHTML = '';
+        function buatKelompok() {
+            const jumlahKelompok = parseInt(jumlahKelompokSelect.value);
+            kelompokContainer.innerHTML = '';
+            kelompok = [];
             
-            kelompok[i].forEach(siswa => {
+            for (let i = 0; i < jumlahKelompok; i++) {
+                const kelompokDiv = document.createElement('div');
+                kelompokDiv.className = 'kelompok';
+                kelompokDiv.innerHTML = `
+                    <div class="kelompok-header">Kelompok ${i + 1}</div>
+                    <ul class="kelompok-list" id="kelompok-${i}"></ul>
+                `;
+                kelompokContainer.appendChild(kelompokDiv);
+                kelompok.push([]);
+            }
+            
+            // Reset state
+            siswaTerpilih = [];
+            currentGroupIndex = 0;
+            updateProgress();
+            simpanBtn.disabled = true;
+        }
+
+        // Update progress indicator
+        function updateProgress() {
+            const total = siswa.length;
+            const terbagi = siswaTerpilih.length;
+            progressText.textContent = `${terbagi} dari ${total} siswa sudah dibagi`;
+            
+            if (terbagi === total) {
+                simpanBtn.disabled = false;
+                stopAutoMode();
+            }
+        }
+
+        // Acak siswa
+        function acakSiswa() {
+            if (isAnimating) return;
+            
+            if (siswaTerpilih.length === siswa.length) {
+                alert('Semua siswa sudah terbagi!');
+                stopAutoMode();
+                return;
+            }
+            
+            const tipePembagian = tipePembagianSelect.value;
+            
+            // Filter siswa yang belum terpilih
+            const siswaBelumTerpilih = siswa.filter(s => !siswaTerpilih.includes(s.nama));
+            
+            // Jika pisah gender, filter berdasarkan gender
+            let siswaYangDiacak = [...siswaBelumTerpilih];
+            if (tipePembagian === 'pisah-gender') {
+                // Cari gender yang belum habis
+                const lakiBelumTerpilih = siswaBelumTerpilih.filter(s => s.gender === 'L').length > 0;
+                const perempuanBelumTerpilih = siswaBelumTerpilih.filter(s => s.gender === 'P').length > 0;
+                
+                if (lakiBelumTerpilih && perempuanBelumTerpilih) {
+                    const lastGender = kelompok.flatMap(k => k[k.length - 1]?.gender).pop();
+                    const nextGender = lastGender === 'L' ? 'P' : 'L';
+                    siswaYangDiacak = siswaBelumTerpilih.filter(s => s.gender === nextGender);
+                }
+            }
+            
+            if (siswaYangDiacak.length === 0) {
+                alert('Tidak ada siswa yang memenuhi kriteria pembagian!');
+                stopAutoMode();
+                return;
+            }
+            
+            // Mulai animasi
+            isAnimating = true;
+            animationModal.style.display = 'flex';
+            selectedResult.textContent = '';
+            
+            let counter = 0;
+            const duration = 2000; // Durasi animasi 2 detik
+            const interval = 100;
+            
+            animationInterval = setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * siswaYangDiacak.length);
+                const randomSiswa = siswaYangDiacak[randomIndex];
+                randomAnimation.textContent = randomSiswa.nama;
+                
+                counter += interval;
+                if (counter >= duration) {
+                    clearInterval(animationInterval);
+                    selesaiAcak(randomSiswa);
+                }
+            }, interval);
+        }
+
+        // Selesai acak
+        function selesaiAcak(siswa) {
+            randomAnimation.textContent = '';
+            selectedResult.textContent = `${siswa.nama} masuk ke Kelompok ${currentGroupIndex + 1}`;
+            
+            setTimeout(() => {
+                // Tambahkan siswa ke kelompok
+                kelompok[currentGroupIndex].push(siswa);
+                siswaTerpilih.push(siswa.nama);
+                
+                // Update tampilan
+                const kelompokList = document.getElementById(`kelompok-${currentGroupIndex}`);
                 const li = document.createElement('li');
                 li.textContent = `${siswa.nama} (${siswa.gender})`;
                 kelompokList.appendChild(li);
-            });
+                
+                // Update group index (round robin)
+                currentGroupIndex = (currentGroupIndex + 1) % parseInt(jumlahKelompokSelect.value);
+                
+                // Update progress
+                updateProgress();
+                
+                // Tutup modal
+                setTimeout(() => {
+                    animationModal.style.display = 'none';
+                    isAnimating = false;
+                    
+                    // Jika auto mode aktif, lanjutkan ke siswa berikutnya setelah jeda
+                    if (autoMode && siswaTerpilih.length < siswa.length) {
+                        autoInterval = setTimeout(() => {
+                            acakSiswa();
+                        }, delayBetweenPicks);
+                    }
+                }, 1000); // Waktu tampil hasil 1 detik
+            }, 100);
         }
+
+        // Fungsi untuk memulai auto mode
+        function startAutoMode() {
+            if (siswaTerpilih.length === siswa.length) {
+                alert('Semua siswa sudah terbagi!');
+                return;
+            }
+            
+            autoMode = true;
+            acakBtn.textContent = 'Berhenti Auto';
+            acakBtn.classList.add('auto-mode');
+            acakSiswa();
+        }
+
+        // Fungsi untuk menghentikan auto mode
+        function stopAutoMode() {
+            autoMode = false;
+            clearTimeout(autoInterval);
+            acakBtn.textContent = 'Acak Sekarang';
+            acakBtn.classList.remove('auto-mode');
+        }
+
+        // Reset semua
+        function resetSemua() {
+            stopAutoMode();
+            if (isAnimating) {
+                clearInterval(animationInterval);
+                isAnimating = false;
+            }
+            
+            animationModal.style.display = 'none';
+            buatKelompok();
+            localStorage.removeItem('kelompokData');
+        }
+
+        // Simpan hasil
+        function simpanHasil() {
+            const data = {
+                jumlahKelompok: jumlahKelompokSelect.value,
+                tipePembagian: tipePembagianSelect.value,
+                kelompok: kelompok,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simpan ke localStorage
+            localStorage.setItem('kelompokData', JSON.stringify(data));
+            
+            // Buat file CSV
+            let csvContent = "data:text/csv;charset=utf-8,";
+            
+            // Header
+            const headers = [];
+            for (let i = 0; i < kelompok.length; i++) {
+                headers.push(`Kelompok ${i + 1}`);
+            }
+            csvContent += headers.join(",") + "\r\n";
+            
+            // Data
+            const maxRows = Math.max(...kelompok.map(k => k.length));
+            for (let i = 0; i < maxRows; i++) {
+                const row = [];
+                for (let j = 0; j < kelompok.length; j++) {
+                    row.push(kelompok[j][i] ? `${kelompok[j][i].nama} (${kelompok[j][i].gender})` : '');
+                }
+                csvContent += row.join(",") + "\r\n";
+            }
+            
+            // Download
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `pembagian_kelompok_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Load dari localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('kelompokData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                
+                // Set dropdown
+                jumlahKelompokSelect.value = data.jumlahKelompok;
+                tipePembagianSelect.value = data.tipePembagian;
+                
+                // Buat kelompok
+                buatKelompok();
+                
+                // Isi data
+                kelompok = data.kelompok;
+                siswaTerpilih = kelompok.flatMap(k => k.map(s => s.nama));
+                
+                // Update tampilan
+                for (let i = 0; i < kelompok.length; i++) {
+                    const kelompokList = document.getElementById(`kelompok-${i}`);
+                    kelompokList.innerHTML = '';
+                    
+                    kelompok[i].forEach(siswa => {
+                        const li = document.createElement('li');
+                        li.textContent = `${siswa.nama} (${siswa.gender})`;
+                        kelompokList.appendChild(li);
+                    });
+                }
+                
+                updateProgress();
+                if (siswaTerpilih.length === siswa.length) {
+                    simpanBtn.disabled = false;
+                }
+            }
+        }
+
+        // Event Listeners
+        acakBtn.addEventListener('click', function() {
+            if (autoMode) {
+                stopAutoMode();
+            } else {
+                startAutoMode();
+            }
+        });
         
-        updateProgress();
-        if (siswaTerpilih.length === siswa.length) {
-            simpanBtn.disabled = false;
-        }
-    }
-}
+        resetBtn.addEventListener('click', resetSemua);
+        simpanBtn.addEventListener('click', simpanHasil);
+        jumlahKelompokSelect.addEventListener('change', buatKelompok);
 
-// Event Listeners
-acakBtn.addEventListener('click', acakSiswa);
-resetBtn.addEventListener('click', resetSemua);
-simpanBtn.addEventListener('click', simpanHasil);
-jumlahKelompokSelect.addEventListener('change', buatKelompok);
-
-// Initialize
-init();
-</script>
+        // Initialize
+        init();
+    </script>
 </body>
 </html>
