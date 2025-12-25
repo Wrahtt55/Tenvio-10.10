@@ -3,717 +3,772 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembagian Kelompok Siswa 10.10</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Wheel of Teams - Elegant Spin Wheel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #4a6bff;
-            --secondary-color: #6c757d;
-            --success-color: #28a745;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --border-color: #dee2e6;
-            --font-main: 'Poppins', sans-serif;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: var(--font-main);
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f7ff;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
             padding: 20px;
-            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 25px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         h1 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: var(--primary-color);
-            font-size: 24px;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
-            color: var(--dark-color);
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b8c2cc;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .wheel-container {
+            flex: 1;
+            min-width: 500px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wheel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wheel {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: #0f3460;
+            box-shadow: 
+                0 0 0 15px rgba(255, 255, 255, 0.05),
+                0 0 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.24, 0.99);
+        }
+
+        .wheel-section {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transform-origin: bottom right;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 40px;
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .wheel-section-text {
+            transform: rotate(90deg);
+            white-space: nowrap;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .wheel-center {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #16213e;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid #e94560;
+        }
+
+        .wheel-center::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #e94560;
+            border-radius: 50%;
+        }
+
+        .pointer {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 60px;
+            z-index: 20;
+        }
+
+        .pointer::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #e94560;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.5));
         }
 
         .controls {
-            background-color: var(--light-color);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
+            margin-top: 30px;
             display: flex;
+            gap: 20px;
             flex-wrap: wrap;
-            gap: 15px;
-            align-items: flex-end;
+            justify-content: center;
         }
 
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            min-width: 150px;
-        }
-
-        .control-group label {
-            margin-bottom: 5px;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .control-group select {
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-family: var(--font-main);
-            font-size: 14px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .btn-primary, .btn-secondary, .btn-success {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: var(--font-main);
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #3a5bef;
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary-color);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-
-        .btn-success {
-            background-color: var(--success-color);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-        }
-
-        .progress-indicator {
-            margin-left: auto;
-            font-size: 14px;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-
-        .results {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .kelompok-container {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-
-        .kelompok {
-            flex: 1;
-            min-width: 200px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-            padding: 15px;
-            border: 1px solid var(--border-color);
-        }
-
-        .kelompok-header {
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--primary-color);
-            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .kelompok-list {
+        .btn-spin {
+            background: linear-gradient(90deg, #e94560, #ff7e5f);
+            color: white;
+        }
+
+        .btn-spin:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-spin:active {
+            transform: translateY(0);
+        }
+
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-reset:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .results-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .results-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #feb47b;
+            text-align: center;
+        }
+
+        .result-group {
+            margin-bottom: 30px;
+        }
+
+        .group-title {
+            font-size: 1.4rem;
+            color: #e94560;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .team-list {
             list-style-type: none;
-        }
-
-        .kelompok-list li {
-            padding: 5px 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 14px;
-        }
-
-        .kelompok-list li:last-child {
-            border-bottom: none;
-        }
-
-        .daftar-siswa {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .siswa-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
         }
 
-        .siswa-item {
-            padding: 8px 12px;
-            background-color: var(--light-color);
-            border-radius: 4px;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
+        .team-list::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .siswa-item .gender {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 30px;
+        .team-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
+        }
+
+        .team-list::-webkit-scrollbar-thumb {
+            background: rgba(233, 69, 96, 0.5);
+            border-radius: 10px;
+        }
+
+        .team-item {
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .team-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
+        }
+
+        .team-item.selected {
+            background: rgba(233, 69, 96, 0.2);
+            border-left: 4px solid #e94560;
+            font-weight: 600;
+        }
+
+        .selected-team {
+            background: rgba(233, 69, 96, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
             text-align: center;
-            max-width: 500px;
-            width: 90%;
+            border: 1px solid rgba(233, 69, 96, 0.3);
         }
 
-        .random-animation {
-            font-size: 24px;
-            font-weight: 600;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--primary-color);
+        .selected-team h3 {
+            color: #feb47b;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
         }
 
-        .selected-result {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--success-color);
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .selected-team-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e94560;
+            padding: 10px;
+            animation: pulse 2s infinite;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        .spinning {
+            animation: wheelGlow 1.5s infinite alternate;
+        }
+
+        @keyframes wheelGlow {
+            from { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.05), 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(0, 0, 0, 0.3); }
+            to { box-shadow: 0 0 0 15px rgba(255, 126, 95, 0.2), 0 0 60px rgba(233, 69, 96, 0.5), inset 0 0 40px rgba(0, 0, 0, 0.3); }
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #b8c2cc;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .wheel-container, .results-container {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .wheel {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .wheel-wrapper {
+                height: 400px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
             .controls {
                 flex-direction: column;
-                align-items: stretch;
+                width: 100%;
             }
             
-            .button-group {
-                flex-direction: column;
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
-            
-            .progress-indicator {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            
-            .kelompok-container {
-                flex-direction: column;
-            }
-            
-            .siswa-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .btn-primary.auto-mode {
-            background-color: #ff6b4a;
-        }
-
-        .btn-primary.auto-mode:hover {
-            background-color: #e05a3a;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Pembagian Kelompok Siswa 10.10</h1>
-        
-        <div class="controls">
-            <div class="control-group">
-                <label for="jumlah-kelompok">Jumlah Kelompok:</label>
-                <select id="jumlah-kelompok">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
+        <header>
+            <h1><i class="fas fa-dharmachakra"></i> Wheel of Teams</h1>
+            <p class="subtitle">Putar roda untuk memilih tim secara acak dari 60 tim yang terbagi dalam 4 grup (A-D). Setiap grup berisi maksimal 15 tim.</p>
+        </header>
+
+        <div class="main-content">
+            <div class="wheel-container">
+                <div class="wheel-wrapper">
+                    <div class="wheel" id="wheel">
+                        <!-- Wheel sections will be generated by JavaScript -->
+                    </div>
+                    <div class="wheel-center"></div>
+                    <div class="pointer"></div>
+                </div>
+                
+                <div class="controls">
+                    <button class="btn btn-spin" id="spinBtn">
+                        <i class="fas fa-play"></i> Putar Roda
+                    </button>
+                    <button class="btn btn-reset" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
             </div>
-            
-            <div class="control-group">
-                <label for="tipe-pembagian">Tipe Pembagian:</label>
-                <select id="tipe-pembagian">
-                    <option value="campur">Campur (Acak Semua)</option>
-                    <option value="pisah-gender">Pisah Gender</option>
-                </select>
-            </div>
-            
-            <div class="button-group">
-                <button id="acak-btn" class="btn-primary">Acak Sekarang</button>
-                <button id="reset-btn" class="btn-secondary">Reset Semua</button>
-                <button id="simpan-btn" class="btn-success" disabled>Simpan Hasil</button>
-            </div>
-            
-            <div class="progress-indicator">
-                <span id="progress-text">0 dari 35 siswa sudah dibagi</span>
-            </div>
-        </div>
-        
-        <div class="results">
-            <div class="kelompok-container" id="kelompok-container">
-                <!-- Kelompok akan ditampilkan di sini -->
-            </div>
-            
-            <div class="daftar-siswa">
-                <h3>Daftar Semua Siswa</h3>
-                <div class="siswa-list" id="siswa-list">
-                    <!-- Daftar siswa akan ditampilkan di sini -->
+
+            <div class="results-container">
+                <h2 class="results-title">Daftar Tim & Hasil</h2>
+                
+                <div id="groupsContainer">
+                    <!-- Groups will be generated by JavaScript -->
+                </div>
+                
+                <div class="selected-team">
+                    <h3>Tim Terpilih</h3>
+                    <div class="selected-team-name" id="selectedTeam">-</div>
+                    <p id="selectedGroup" style="margin-top: 10px; color: #b8c2cc;">Belum ada tim yang dipilih</p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Modal Animasi -->
-    <div class="modal" id="animation-modal">
-        <div class="modal-content">
-            <div class="random-animation" id="random-animation"></div>
-            <div class="selected-result" id="selected-result"></div>
+
+        <div class="footer">
+            <p>Wheel of Teams &copy; 2023 | 60 tim dibagi dalam 4 grup (A-D) | Setiap grup maksimal 15 tim</p>
         </div>
     </div>
-    
+
     <script>
-        // Data siswa yang sudah dikoreksi
-        const siswa = [
-            { nama: "Shava", gender: "P" },
-            { nama: "Nadin", gender: "P" },
-            { nama: "Evan", gender: "L" },
-            { nama: "Rifka", gender: "P" },
-            { nama: "Bagas", gender: "L" },
-            { nama: "Reni", gender: "P" },
-            { nama: "Geysha", gender: "P" },
-            { nama: "Nazawa", gender: "P" },
-            { nama: "Dani", gender: "L" },
-            { nama: "Hana", gender: "P" },
-            { nama: "Raka", gender: "L" },
-            { nama: "Amanda", gender: "P" },
-            { nama: "Ayra", gender: "P" },
-            { nama: "Eky", gender: "L" },
-            { nama: "Kenneth", gender: "L" },
-            { nama: "Chrisant", gender: "P" },
-            { nama: "Hatma", gender: "P" },
-            { nama: "Bintari", gender: "P" },
-            { nama: "Sabrina", gender: "P" },
-            { nama: "Intan", gender: "P" },
-            { nama: "Lestari", gender: "P" },
-            { nama: "Flo", gender: "P" },
-            { nama: "Eka", gender: "P" },
-            { nama: "Fakhri", gender: "L" },
-            { nama: "Harul", gender: "L" },
-            { nama: "Siska", gender: "P" },
-            { nama: "Novia", gender: "P" },
-            { nama: "Reza", gender: "L" },
-            { nama: "Sachie", gender: "P" },
-            { nama: "Farel", gender: "L" },
-            { nama: "Seto", gender: "L" },
-            { nama: "Aisyah", gender: "P" },
-            { nama: "Safa", gender: "P" },
-            { nama: "Anie", gender: "P" },
-            { nama: "Vera", gender: "P" }
+        // Data tim dari permintaan
+        const teamsData = [
+            "D'4Horsemen", "Alzahrawi", "AWS GHOST LEGION", "Krueger's", "ANOMALY KROCOO",
+            "Night silent", "T7P", "BLACK•BLOOD", "PHYTAGORAS", "CLAY TAICHAN",
+            "BLOOD QUEENS", "TNJ SUPERNOVA", "DG SevenZone", "ObLvion⁸⁸⁸", "2K Killer",
+            "2K SECRET", "SKYPHANTOMS", "яє∂ нєανєη мσση", "Lucky", "4V EXECUTION",
+            "Overkill", "Basis rahasia", "The Blue Dragon", "MOONVEIL", "OdiumVìctus",
+            "THE BLUE DRAGON", "Red Devil", "NASASEVEN", "GRAVE-X SERAPHS", "TF",
+            "FearlessID", "MANDORANG", "ANOMALY 968", "angga hidayat", "AETHEROIN",
+            "Nexgen", "Inferno Shadow", "CAKBOOM", "TEAM LYNX", "KAZOKU LUNNAR",
+            "The Aethers", "CLAY BATU", "KAURIR ESPORT", "G. WASTE"
         ];
 
-        // DOM Elements
-        const jumlahKelompokSelect = document.getElementById('jumlah-kelompok');
-        const tipePembagianSelect = document.getElementById('tipe-pembagian');
-        const acakBtn = document.getElementById('acak-btn');
-        const resetBtn = document.getElementById('reset-btn');
-        const simpanBtn = document.getElementById('simpan-btn');
-        const progressText = document.getElementById('progress-text');
-        const kelompokContainer = document.getElementById('kelompok-container');
-        const siswaList = document.getElementById('siswa-list');
-        const animationModal = document.getElementById('animation-modal');
-        const randomAnimation = document.getElementById('random-animation');
-        const selectedResult = document.getElementById('selected-result');
+        // Warna untuk setiap grup
+        const groupColors = {
+            'A': '#e94560',
+            'B': '#0f9b8e',
+            'C': '#ff7e5f',
+            'D': '#7b42f6'
+        };
 
-        // State
-        let kelompok = [];
-        let siswaTerpilih = [];
-        let isAnimating = false;
-        let animationInterval;
-        let currentGroupIndex = 0;
-        let autoMode = false;
-        let autoInterval;
-        const delayBetweenPicks = 2000; // 2 detik jeda antara pemilihan
+        // Variabel global
+        let groups = {};
+        let isSpinning = false;
+        let selectedTeam = null;
+        let currentRotation = 0;
+        let wheelSections = [];
 
-        // Initialize
-        function init() {
-            renderDaftarSiswa();
-            buatKelompok();
-            loadFromLocalStorage();
-        }
-
-        // Render daftar siswa
-        function renderDaftarSiswa() {
-            siswaList.innerHTML = '';
-            siswa.forEach(siswa => {
-                const siswaItem = document.createElement('div');
-                siswaItem.className = 'siswa-item';
-                siswaItem.innerHTML = `
-                    <span>${siswa.nama}</span>
-                    <span class="gender">${siswa.gender}</span>
-                `;
-                siswaList.appendChild(siswaItem);
+        // Fungsi untuk membagi tim ke dalam grup
+        function distributeTeamsToGroups() {
+            // Reset groups
+            groups = {
+                'A': [],
+                'B': [],
+                'C': [],
+                'D': []
+            };
+            
+            // Distribusikan tim ke grup (maksimal 15 per grup)
+            const maxPerGroup = 15;
+            const groupKeys = Object.keys(groups);
+            
+            teamsData.forEach((team, index) => {
+                const groupIndex = Math.floor(index / maxPerGroup);
+                if (groupIndex < groupKeys.length) {
+                    const groupKey = groupKeys[groupIndex];
+                    groups[groupKey].push(team);
+                }
+            });
+            
+            // Hapus grup yang kosong
+            Object.keys(groups).forEach(key => {
+                if (groups[key].length === 0) {
+                    delete groups[key];
+                }
             });
         }
 
-        // Buat kelompok
-        function buatKelompok() {
-            const jumlahKelompok = parseInt(jumlahKelompokSelect.value);
-            kelompokContainer.innerHTML = '';
-            kelompok = Array(jumlahKelompok).fill().map(() => []);
+        // Fungsi untuk membuat roda
+        function createWheel() {
+            const wheel = document.getElementById('wheel');
+            wheel.innerHTML = '';
+            wheelSections = [];
             
-            for (let i = 0; i < jumlahKelompok; i++) {
-                const kelompokDiv = document.createElement('div');
-                kelompokDiv.className = 'kelompok';
-                kelompokDiv.innerHTML = `
-                    <div class="kelompok-header">Kelompok ${i + 1}</div>
-                    <ul class="kelompok-list" id="kelompok-${i}"></ul>
-                `;
-                kelompokContainer.appendChild(kelompokDiv);
-            }
+            // Kumpulkan semua tim dari semua grup
+            const allTeams = [];
+            Object.keys(groups).forEach(groupKey => {
+                groups[groupKey].forEach(team => {
+                    allTeams.push({ name: team, group: groupKey });
+                });
+            });
             
-            // Reset state
-            siswaTerpilih = [];
-            currentGroupIndex = 0;
-            updateProgress();
-            simpanBtn.disabled = true;
+            const totalTeams = allTeams.length;
+            const anglePerSection = 360 / totalTeams;
+            
+            // Buat setiap bagian roda
+            allTeams.forEach((team, index) => {
+                const section = document.createElement('div');
+                section.className = 'wheel-section';
+                
+                // Hitung warna berdasarkan grup
+                const color = groupColors[team.group];
+                const lightColor = lightenColor(color, 30);
+                
+                // Atur latar belakang gradien
+                section.style.background = `linear-gradient(${anglePerSection * index}deg, ${color}, ${lightColor})`;
+                
+                // Atur rotasi
+                const rotation = anglePerSection * index;
+                section.style.transform = `rotate(${rotation}deg)`;
+                
+                // Tambahkan teks
+                const textDiv = document.createElement('div');
+                textDiv.className = 'wheel-section-text';
+                textDiv.textContent = team.name;
+                textDiv.style.color = getContrastColor(color);
+                
+                section.appendChild(textDiv);
+                wheel.appendChild(section);
+                
+                // Simpan informasi bagian
+                wheelSections.push({
+                    element: section,
+                    team: team.name,
+                    group: team.group,
+                    startAngle: rotation,
+                    endAngle: rotation + anglePerSection
+                });
+            });
         }
 
-        // Update progress indicator
-        function updateProgress() {
-            const total = siswa.length;
-            const terbagi = siswaTerpilih.length;
-            progressText.textContent = `${terbagi} dari ${total} siswa sudah dibagi`;
+        // Fungsi untuk menampilkan grup di panel hasil
+        function displayGroups() {
+            const groupsContainer = document.getElementById('groupsContainer');
+            groupsContainer.innerHTML = '';
             
-            if (terbagi === total) {
-                simpanBtn.disabled = false;
-                stopAutoMode();
-            }
-        }
-
-        function acakSiswa() {
-            if (isAnimating) return;
-            
-            if (siswaTerpilih.length === siswa.length) {
-                alert('Semua siswa sudah terbagi!');
-                stopAutoMode();
-                return;
-            }
-            
-            const tipePembagian = tipePembagianSelect.value;
-            const siswaBelumTerpilih = siswa.filter(s => !siswaTerpilih.includes(s.nama));
-            
-            if (siswaBelumTerpilih.length === 0) {
-                alert('Tidak ada siswa yang tersisa!');
-                stopAutoMode();
-                return;
-            }
-            
-            let siswaYangDiacak = [...siswaBelumTerpilih];
-            if (tipePembagian === 'pisah-gender') {
-                // Cari gender yang belum habis
-                const lakiBelumTerpilih = siswaBelumTerpilih.some(s => s.gender === 'L');
-                const perempuanBelumTerpilih = siswaBelumTerpilih.some(s => s.gender === 'P');
+            Object.keys(groups).forEach(groupKey => {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'result-group';
                 
-                if (lakiBelumTerpilih && perempuanBelumTerpilih) {
-                    // Cari gender terakhir yang dipilih
-                    const lastGender = kelompok.flatMap(k => k).pop()?.gender;
-                    const nextGender = lastGender === 'L' ? 'P' : 'L';
-                    siswaYangDiacak = siswaBelumTerpilih.filter(s => s.gender === nextGender);
-                }
-            }
-            
-            if (siswaYangDiacak.length === 0) {
-                alert('Tidak ada siswa yang memenuhi kriteria pembagian!');
-                stopAutoMode();
-                return;
-            }
-            
-            isAnimating = true;
-            animationModal.style.display = 'flex';
-            selectedResult.textContent = '';
-            
-            let counter = 0;
-            const duration = 2000; // Durasi animasi 2 detik
-            const interval = 100;
-            const startTime = Date.now();
-            
-            animationInterval = setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * siswaYangDiacak.length);
-                const randomSiswa = siswaYangDiacak[randomIndex];
-                randomAnimation.textContent = randomSiswa.nama;
+                const groupTitle = document.createElement('h3');
+                groupTitle.className = 'group-title';
+                groupTitle.innerHTML = `<i class="fas fa-users"></i> Grup ${groupKey} (${groups[groupKey].length} tim)`;
+                groupDiv.appendChild(groupTitle);
                 
-                counter += interval;
-                if (Date.now() - startTime >= duration) {
-                    clearInterval(animationInterval);
-                    selesaiAcak(randomSiswa);
-                }
-            }, interval);
-        }
-
-        function selesaiAcak(siswaTerpilih) {
-            if (!siswaTerpilih) {
-                console.error("Data siswa tidak valid");
-                animationModal.style.display = 'none';
-                isAnimating = false;
-                return;
-            }
-
-            randomAnimation.textContent = '';
-            selectedResult.textContent = `${siswaTerpilih.nama} masuk ke Kelompok ${currentGroupIndex + 1}`;
-            
-            setTimeout(() => {
-                // Tambahkan siswa ke kelompok
-                kelompok[currentGroupIndex].push(siswaTerpilih);
-                this.siswaTerpilih.push(siswaTerpilih.nama);
+                const teamList = document.createElement('ul');
+                teamList.className = 'team-list';
                 
-                // Update tampilan
-                const kelompokList = document.getElementById(`kelompok-${currentGroupIndex}`);
-                if (!kelompokList) {
-                    console.error(`Element kelompok-${currentGroupIndex} tidak ditemukan`);
-                    return;
-                }
-                
-                const li = document.createElement('li');
-                li.textContent = `${siswaTerpilih.nama} (${siswaTerpilih.gender})`;
-                kelompokList.appendChild(li);
-                
-                // Update group index (round robin)
-                currentGroupIndex = (currentGroupIndex + 1) % parseInt(jumlahKelompokSelect.value);
-                updateProgress();
-                
-                // Tutup modal
-                setTimeout(() => {
-                    animationModal.style.display = 'none';
-                    isAnimating = false;
+                groups[groupKey].forEach(team => {
+                    const teamItem = document.createElement('li');
+                    teamItem.className = 'team-item';
+                    teamItem.textContent = team;
+                    teamItem.dataset.team = team;
+                    teamItem.dataset.group = groupKey;
                     
-                    if (autoMode && this.siswaTerpilih.length < siswa.length) {
-                        autoInterval = setTimeout(() => {
-                            acakSiswa();
-                        }, delayBetweenPicks);
-                    } else if (this.siswaTerpilih.length === siswa.length) {
-                        stopAutoMode();
-                    }
-                }, 1000);
-            }, 1000);
-        }
-
-        // Fungsi untuk memulai auto mode
-        function startAutoMode() {
-            if (siswaTerpilih.length === siswa.length) {
-                alert('Semua siswa sudah terbagi!');
-                return;
-            }
-            
-            autoMode = true;
-            acakBtn.textContent = 'Berhenti Auto';
-            acakBtn.classList.add('auto-mode');
-            
-            // Mulai proses acak pertama
-            acakSiswa();
-        }
-
-        // Fungsi untuk menghentikan auto mode
-        function stopAutoMode() {
-            autoMode = false;
-            clearTimeout(autoInterval);
-            acakBtn.textContent = 'Acak Sekarang';
-            acakBtn.classList.remove('auto-mode');
-        }
-
-        // Reset semua
-        function resetSemua() {
-            stopAutoMode();
-            if (isAnimating) {
-                clearInterval(animationInterval);
-                isAnimating = false;
-            }
-            
-            animationModal.style.display = 'none';
-            buatKelompok();
-            localStorage.removeItem('kelompokData');
-        }
-
-        // Simpan hasil
-        function simpanHasil() {
-            const data = {
-                jumlahKelompok: jumlahKelompokSelect.value,
-                tipePembagian: tipePembagianSelect.value,
-                kelompok: kelompok,
-                timestamp: new Date().toISOString()
-            };
-            
-            // Simpan ke localStorage
-            localStorage.setItem('kelompokData', JSON.stringify(data));
-            
-            // Buat file CSV
-            let csvContent = "data:text/csv;charset=utf-8,";
-            
-            // Header
-            const headers = [];
-            for (let i = 0; i < kelompok.length; i++) {
-                headers.push(`Kelompok ${i + 1}`);
-            }
-            csvContent += headers.join(",") + "\r\n";
-            
-            // Data
-            const maxRows = Math.max(...kelompok.map(k => k.length));
-            for (let i = 0; i < maxRows; i++) {
-                const row = [];
-                for (let j = 0; j < kelompok.length; j++) {
-                    row.push(kelompok[j][i] ? `${kelompok[j][i].nama} (${kelompok[j][i].gender})` : '');
-                }
-                csvContent += row.join(",") + "\r\n";
-            }
-            
-            // Download
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `pembagian_kelompok_${new Date().toISOString().slice(0, 10)}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function loadFromLocalStorage() {
-            const savedData = localStorage.getItem('kelompokData');
-            if (!savedData) {
-                return;
-            }
-
-            try {
-                const data = JSON.parse(savedData);
-                
-                // Validasi data
-                if (!data.jumlahKelompok || !data.tipePembagian || !Array.isArray(data.kelompok)) {
-                    throw new Error("Format data tidak valid");
-                }
-                
-                // Set dropdown
-                jumlahKelompokSelect.value = data.jumlahKelompok;
-                tipePembagianSelect.value = data.tipePembagian;
-                
-                // Buat kelompok
-                buatKelompok();
-                
-                // Isi data
-                kelompok = data.kelompok;
-                siswaTerpilih = kelompok.flatMap(k => k.map(s => s.nama));
-                
-                // Update tampilan
-                for (let i = 0; i < kelompok.length; i++) {
-                    const kelompokList = document.getElementById(`kelompok-${i}`);
-                    if (!kelompokList) continue;
-                    
-                    kelompokList.innerHTML = '';
-                    
-                    kelompok[i].forEach(siswa => {
-                        if (!siswa.nama || !siswa.gender) continue;
-                        const li = document.createElement('li');
-                        li.textContent = `${siswa.nama} (${siswa.gender})`;
-                        kelompokList.appendChild(li);
+                    teamItem.addEventListener('click', () => {
+                        highlightSelectedTeam(team, groupKey);
                     });
-                }
+                    
+                    teamList.appendChild(teamItem);
+                });
                 
-                updateProgress();
-                simpanBtn.disabled = (siswaTerpilih.length !== siswa.length);
-            } catch (error) {
-                console.error("Gagal memuat data:", error);
-                buatKelompok();
-            }
+                groupDiv.appendChild(teamList);
+                groupsContainer.appendChild(groupDiv);
+            });
         }
 
-        // Event Listeners
-        acakBtn.addEventListener('click', function() {
-            if (autoMode) {
-                stopAutoMode();
-            } else {
-                startAutoMode();
-            }
-        });
-        
-        resetBtn.addEventListener('click', resetSemua);
-        simpanBtn.addEventListener('click', simpanHasil);
-        jumlahKelompokSelect.addEventListener('change', buatKelompok);
+        // Fungsi untuk memutar roda
+        function spinWheel() {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            const wheel = document.getElementById('wheel');
+            const spinBtn = document.getElementById('spinBtn');
+            
+            // Tambah kelas spinning untuk efek visual
+            wheel.classList.add('spinning');
+            spinBtn.disabled = true;
+            spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memutar...';
+            
+            // Putaran acak (antara 5-10 putaran)
+            const spins = 5 + Math.random() * 5;
+            const extraDegrees = Math.floor(Math.random() * 360);
+            const totalRotation = (spins * 360) + extraDegrees;
+            
+            // Rotasi roda
+            currentRotation += totalRotation;
+            wheel.style.transform = `rotate(${currentRotation}deg)`;
+            
+            // Hitung tim yang terpilih setelah animasi selesai
+            setTimeout(() => {
+                // Normalisasi rotasi ke 0-360 derajat
+                const normalizedRotation = currentRotation % 360;
+                const actualRotation = (360 - normalizedRotation) % 360;
+                
+                // Temukan bagian yang dipilih
+                let selectedSection = null;
+                for (const section of wheelSections) {
+                    // Periksa apakah rotasi berada dalam rentang sudut bagian
+                    let start = section.startAngle;
+                    let end = section.endAngle;
+                    
+                    // Penyesuaian untuk kasus di mana start > end
+                    if (start > end) {
+                        if (actualRotation >= start || actualRotation < end) {
+                            selectedSection = section;
+                            break;
+                        }
+                    } else {
+                        if (actualRotation >= start && actualRotation < end) {
+                            selectedSection = section;
+                            break;
+                        }
+                    }
+                }
+                
+                if (selectedSection) {
+                    selectedTeam = selectedSection.team;
+                    const selectedGroup = selectedSection.group;
+                    
+                    // Tampilkan hasil
+                    document.getElementById('selectedTeam').textContent = selectedTeam;
+                    document.getElementById('selectedGroup').textContent = `Grup ${selectedGroup}`;
+                    
+                    // Highlight tim di daftar
+                    highlightSelectedTeam(selectedTeam, selectedGroup);
+                    
+                    // Tampilkan notifikasi
+                    showNotification(`Tim "${selectedTeam}" dari Grup ${selectedGroup} terpilih!`);
+                }
+                
+                // Reset status spinning
+                wheel.classList.remove('spinning');
+                spinBtn.disabled = false;
+                spinBtn.innerHTML = '<i class="fas fa-play"></i> Putar Roda';
+                isSpinning = false;
+            }, 4000); // Sesuaikan dengan durasi CSS transition (4s)
+        }
 
-        // Initialize
-        init();
+        // Fungsi untuk highlight tim yang terpilih
+        function highlightSelectedTeam(teamName, group) {
+            // Hapus semua seleksi sebelumnya
+            document.querySelectorAll('.team-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Highlight item yang dipilih
+            document.querySelectorAll('.team-item').forEach(item => {
+                if (item.dataset.team === teamName && item.dataset.group === group) {
+                    item.classList.add('selected');
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        }
+
+        // Fungsi untuk reset seleksi
+        function resetSelection() {
+            selectedTeam = null;
+            document.getElementById('selectedTeam').textContent = '-';
+            document.getElementById('selectedGroup').textContent = 'Belum ada tim yang dipilih';
+            
+            // Hapus semua seleksi
+            document.querySelectorAll('.team-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Reset rotasi roda
+            currentRotation = 0;
+            document.getElementById('wheel').style.transform = 'rotate(0deg)';
+            
+            showNotification('Seleksi direset. Putar roda lagi!');
+        }
+
+        // Fungsi untuk notifikasi
+        function showNotification(message) {
+            // Buat elemen notifikasi
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(233, 69, 96, 0.9);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                z-index: 1000;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+                max-width: 300px;
+            `;
+            
+            // Tambahkan keyframes untuk animasi
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Hapus notifikasi setelah 3 detik
+            setTimeout(() => {
+                notification.remove();
+                style.remove();
+            }, 3000);
+        }
+
+        // Fungsi utilitas untuk warna
+        function lightenColor(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            
+            return `#${(
+                0x1000000 +
+                (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+                (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+                (B < 255 ? (B < 1 ? 0 : B) : 255)
+            )
+                .toString(16)
+                .slice(1)}`;
+        }
+
+        function getContrastColor(hexColor) {
+            // Convert hex to RGB
+            const r = parseInt(hexColor.substr(1, 2), 16);
+            const g = parseInt(hexColor.substr(3, 2), 16);
+            const b = parseInt(hexColor.substr(5, 2), 16);
+            
+            // Calculate luminance
+            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            
+            // Return black or white depending on luminance
+            return luminance > 0.5 ? '#000000' : '#ffffff';
+        }
+
+        // Inisialisasi
+        function init() {
+            // Distribusikan tim ke grup
+            distributeTeamsToGroups();
+            
+            // Buat roda
+            createWheel();
+            
+            // Tampilkan grup
+            displayGroups();
+            
+            // Event listener untuk tombol
+            document.getElementById('spinBtn').addEventListener('click', spinWheel);
+            document.getElementById('resetBtn').addEventListener('click', resetSelection);
+            
+            // Tampilkan info grup di konsol
+            console.log("Distribusi Tim ke Grup:");
+            Object.keys(groups).forEach(group => {
+                console.log(`Grup ${group}: ${groups[group].length} tim`);
+            });
+        }
+
+        // Jalankan inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
